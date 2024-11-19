@@ -1,0 +1,41 @@
+<div style>
+
+<h1>Guess the Number</h1>
+<input id="guessnumber" type="number" />
+<button onclick="check()">Check</button>
+<p id="result">Your win/lose</p>
+<p id="rank">Score: 10</p>
+</div>
+<script>
+// Get the HTML elements
+var guessnumber = document.getElementById("guessnumber");
+var result = document.getElementById("result");
+var rank = document.getElementById("rank");
+
+// Generate a random number between 1 and 10
+var randomnumber = Math.floor(Math.random() * 10) + 1;
+var total = 10;
+
+function check() {
+  // Get the entered number and convert it to a number type
+  var enternumber = Number(guessnumber.value);
+
+  if (randomnumber === enternumber) {
+    result.textContent = "yatho kurutu vakula kandu pudichuta";
+    console.log("Correct");
+    alert("vanakam da mapala correct")
+  } else {
+    total -= 1; // Decrease the score
+    rank.textContent = "Score: " + total; // Update the score display
+    result.textContent = "jafrin itha olunga kandupudika theriyala";
+    console.log("Wrong");
+    alert("sunniya mmba kuda laiku kadaiyathu")
+  }
+
+  // Optionally, end the game if the score reaches 0
+  if (total === 0) {
+    result.textContent = "Game over! The correct number was " + randomnumber;
+    guessnumber.disabled = true; // Disable input
+  }
+}
+</script>
